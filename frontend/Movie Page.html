@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+    <title> Movie Page </title>
+  </head>
+
+  <style>
+
+  h1{
+    font-family: cursive;
+    font-size: 50px;
+    margin-left: 550px;
+    margin-top: 100px;
+  }
+
+  .search-form {
+      margin-left: 550px;
+      margin-top: 100px;
+      padding: 6px;
+      border-radius: 4px;
+      border: none;
+    }
+
+    .search-form input[type="text"] {
+      padding: 6px;
+      border-radius: 4px;
+      border: none;
+    }
+
+    .search-form input[type="submit"] {
+      padding: 6px 10px;
+      background-color: #555;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+  ul.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    align-items: center;
+    justify-content: center; 
+  }
+
+  ul.navbar li a {
+    display: block;
+    color: white;
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin-top: 0px;
+    padding: 32px 16px;
+    text-decoration: none;
+    justify-content: center;
+    float: left;
+  }
+
+  ul.navbar li b {
+    display: block;
+    color: white;
+    font-size: large;
+    font-family: cursive;
+    text-align: center;
+    margin-top: 6px;
+    padding: 20px 16px;
+    text-decoration: none;
+    justify-content: center;
+    float: left;
+  }
+
+
+  ul.navbar li a:hover {
+    background-color: #111;
+  }
+
+  .profile {
+      position: relative;
+      padding: 12px 16px;
+      float: right;
+    }
+
+    .profile img {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+
+    .table_container {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+     
+    }    
+    
+    .moviepicture_table{
+      margin-right: 100px;
+    }
+
+    #moviepicture{
+      height: 300px;
+    }
+
+    .term{
+      font-family: Arial, Helvetica, sans-serif;
+      
+    }
+
+    .nexttoterm{
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .movie_information{
+      max-width: 700px;
+      
+    }
+
+    #write_review{
+      margin-right: 40px;
+      width: 120px;
+      height: 30px
+    }
+
+    
+
+
+  </style>
+
+<body>
+    
+  <ul class="navbar">
+    <li><b href="#">MyMovies</b></li>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Review</a></li>
+    <li><a href="#">Statistic</a></li>
+    <li><a href="#">Watch List</a></li>
+  
+    <li class="profile">
+      <img src="profil-picture.png" alt="Profile Picture">
+    </li>    
+  </ul>
+  <div class="table_container">
+    <table class="moviepicture_table">
+      <td><img id="moviepicture" src="Icons/LastOfUs.jpg" alt="Movie Picture"></td>
+      <table class="movie_information">
+        <tr>
+           <td><p><span class="term">Title: </span> <span class="nexttoterm" id="title">The Last Of Us</span></p></td>
+        </tr>
+        <tr>
+          <td><p><span class="term">Publishing Year: </span> <span class="nexttoterm" id="year">2023</span></p></td>
+        </tr>
+        <tr>
+          <td><p><span class="term">Genre: </span> <span class="nexttoterm" id="genre">Action</span></p></td>
+        </tr>
+        <tr>
+          <td><p><span class="term">Plot: </span> <span class="nexttoterm" id="plot">After a global pandemic destroys civilization, a hardened survivor takes charge of a 14-year-old.</span></p></td>
+        </tr>
+        <tr>
+          <td><p><span class="term">Actors: </span> <span class="nexttoterm" id="actors">Tom Hanks</span></p></td>
+        </tr>
+
+      </table>
+    </table>
+  </div>
+
+  <div class="table_container">
+    <table>
+      <button id="write_review">WRTIE REVIEW</button>
+      <button id="add_to_watchlist">ADD TO WATCH LIST</button>
+    </table>
+  </div>
+    
+ </body>
+
+</html>

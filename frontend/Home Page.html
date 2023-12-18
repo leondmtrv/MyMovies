@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> MyMovies-Home </title>
+  </head>
+
+  <style>
+
+  h1{
+    font-family: cursive;
+    font-size: 50px;
+    margin-left: 550px;
+    margin-top: 100px;
+  }
+
+  .search-form {
+      margin-left: 550px;
+      margin-top: 100px;
+      padding: 6px;
+      border-radius: 4px;
+      border: none;
+    }
+
+    .search-form input[type="text"] {
+      padding: 6px;
+      border-radius: 4px;
+      border: none;
+    }
+
+    .search-form input[type="submit"] {
+      padding: 6px 10px;
+      background-color: #555;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+  ul.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    align-items: center;
+    justify-content: center; 
+  }
+
+  ul.navbar li a {
+    display: block;
+    color: white;
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin-top: 0px;
+    padding: 32px 16px;
+    text-decoration: none;
+    justify-content: center;
+    float: left;
+  }
+
+  ul.navbar li b {
+    display: block;
+    color: white;
+    font-size: large;
+    font-family: cursive;
+    text-align: center;
+    margin-top: 6px;
+    padding: 20px 16px;
+    text-decoration: none;
+    justify-content: center;
+    float: left;
+  }
+
+
+  ul.navbar li a:hover {
+    background-color: #111;
+  }
+
+  .profile {
+      position: relative;
+      padding: 12px 16px;
+      float: right;
+    }
+
+    .profile img {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+
+    table {
+      border-collapse: separate;
+      margin-left: 330px;
+      border-spacing: 50px;
+    }
+
+    table td {
+      padding: 10px;
+      
+    }
+
+  
+  </style>
+ 
+  <script>
+    function search() {
+      var query = document.getElementById("searchQuery").value;
+      // Perform your desired action with the search query, such as sending it to a server-side script or performing a search operation
+      alert("Searching for: " + query);
+    }
+  </script>
+
+<body>
+    
+  <ul class="navbar">
+    <li><b href="#">MyMovies</b></li>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Review</a></li>
+    <li><a href="#">Statistic</a></li>
+    <li><a href="#">Watch List</a></li>
+  
+    <li class="profile">
+      <img src="profil-picture.png" alt="Profile Picture">
+    </li>    
+  </ul>
+
+
+  <form class="search-form" onsubmit="search()">
+        <input type="text" id="searchQuery" size="40" placeholder="Search..." required>
+        <input type="submit" value="Search">
+  </form>
+
+  <h1>Trending Movies</h1>
+
+  <table>
+    <tr>
+      <td><img src="Icons/LastOfUs.jpg" alt="Image 1"></td>
+      <td><img src="Icons/LastOfUs.jpg" alt="Image 1"></td>
+      <td><img src="Icons/LastOfUs.jpg" alt="Image 1"></td>
+    </tr>
+  </table>
+    
+    
+ </body>
+
+</html>

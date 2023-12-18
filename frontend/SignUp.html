@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+ <head>
+     <title>SignUp</title>
+ </head>
+
+ <style>
+    #rectangle{
+
+        width: 800px;
+        height: 500px;
+        background-color: #333;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform:  translate(-50%, -50%);    
+        /*margin: 0px auto;
+        margin-top: 130px;*/
+
+    }
+
+    .title{
+
+        color: #ffffff;
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        transform:  translate(-50%, -50%); 
+        font-family: cursive;
+    }
+
+    .username{
+
+        font-family: cursive;
+        color: #ffffff;     
+        margin-top: 200px;
+        margin-left: 100px; 
+        display:inline-block;
+        margin-right:10px;  
+        
+    }
+
+    .password{
+
+        font-family: cursive;
+        color: #ffffff;        
+
+        margin-top: 50px;
+        margin-left: 100px;
+        display:inline-block;
+        margin-right: 16px; 
+    }
+
+    .input{
+      width: 500px;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    #logIn{
+        margin-top: 20px;
+        margin-left: 400px;
+        left: 50%;
+        transform:  translate(-50%, -50%);
+        width: 300px;
+        height: 30px;
+        background:none; 
+        border:none;
+        color: #ffffff;
+    }
+
+    #signUp{
+        margin-top: 40px;
+        margin-left: 400px;
+        left: 50%;
+        transform:  translate(-50%, -50%);
+        width: 150px;
+        height: 30px;
+    }
+
+ </style>
+
+ <body>
+    
+    <div id="rectangle">
+
+        <h1 class = "title">Sign Up</h1>
+        <h2 class = "username">Username:</h2>
+        <input class="input" type="text" id="username" name="username" placeholder="Enter your username" required>
+        <h2 class = "password">Password:</h2> 
+        <input class="input" type="text" id="username" name="username" placeholder="Enter your password" required>
+        <button id="signUp">Sign Up</button>
+        <button id="logIn">You Have Already An Account? Log In!</button>
+
+    </div>
+ </body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Statistic</title>
+  </head>
+
+  <style>
+
+  h1{
+    font-family: cursive;
+    font-size: 50px;
+    margin-top: 100px;
+  }
+
+  .search-form {
+      margin-left: 550px;
+      margin-top: 100px;
+      padding: 6px;
+      border-radius: 4px;
+      border: none;
+    }
+
+    .search-form input[type="text"] {
+      padding: 6px;
+      border-radius: 4px;
+      border: none;
+    }
+
+    .search-form input[type="submit"] {
+      padding: 6px 10px;
+      background-color: #555;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+  ul.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    align-items: center;
+    justify-content: center; 
+  }
+
+  ul.navbar li a {
+    display: block;
+    color: white;
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin-top: 0px;
+    padding: 32px 16px;
+    text-decoration: none;
+    justify-content: center;
+    float: left;
+  }
+
+  ul.navbar li b {
+    display: block;
+    color: white;
+    font-size: large;
+    font-family: cursive;
+    text-align: center;
+    margin-top: 6px;
+    padding: 20px 16px;
+    text-decoration: none;
+    justify-content: center;
+    float: left;
+  }
+
+
+  ul.navbar li a:hover {
+    background-color: #111;
+  }
+
+  .profile {
+      position: relative;
+      padding: 12px 16px;
+      float: right;
+    }
+
+    .profile img {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+
+    h1{
+        text-align: center;
+        margin-top: 50px;
+        font-family: cursive;
+        font-size: 40px;
+    }
+
+    .statistic_list{
+        margin-right: 50px;
+        list-style-type: none;
+        text-align: center;
+    }
+
+    ul.statistic_list li{
+        padding: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+    }
+
+    .statistic_data{
+        font-weight: bold;
+    }
+
+    .table_container{
+        margin-top: 60px;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 100px;
+        margin-left: 70px;
+    }
+
+    td{
+        padding-right: 100px;
+        text-align: center;
+    }
+
+    .ranks{
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .movie_title_ranking{
+        font-family: Arial, Helvetica, sans-serif;
+        margin-left: 6px;
+        font-size: 18px;
+    }
+
+    </style>
+
+ <body>
+    
+  <ul class="navbar">
+    <li><b href="#">MyMovies</b></li>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Review</a></li>
+    <li><a href="#">Statistic</a></li>
+    <li><a href="#">Watch List</a></li>
+  
+    <li class="profile">
+      <img src="profil-picture.png" alt="Profile Picture">
+    </li>    
+  </ul>
+
+  <h1>My Statistic</h1>
+
+  <ul class="statistic_list">
+    <li><span>You watched </span> <span class="statistic_data" id="minutes_movie">50</span> <span>minutes movies!</span></li>
+    <li><span>You watched </span> <span class="statistic_data" id="amount_movie">2</span> <span> movies!</span></li>
+    <li><span>You favorite movie is </span> <span class="statistic_data" id="favorite_movie">Batman</span><span>!</span></li>
+    <li><span>You favorite genre is </span> <span class="statistic_data" id="favorite_genre">Action</span><span>!</span></li>
+  </ul>
+
+  <h1>Your Top 3 Movies</h1>
+
+  <div class = "table_container">
+  <table class="favorite_movies">
+    
+    <tr> 
+        <td><span class="ranks">#1</span> <span class="movie_title_ranking" id="1MovieTitle">The Last Of Us</span></td>
+        <td><span class="ranks">#2</span> <span class="movie_title_ranking" id="2MovieTitle">The Last Of Us</span></td>
+        <td><span class="ranks">#3</span> <span class="movie_title_ranking" id="3MovieTitle">The Last Of Us</span></td>
+    </tr>
+    
+    <tr> 
+        <td><img id="1MoviePic" src="Icons/LastOfUs.jpg" alt="1st Place"></td>
+        <td><img id="2MoviePic" src="Icons/LastOfUs.jpg" alt="2st Place"></td>
+        <td><img id="3MoviePic" src="Icons/LastOfUs.jpg" alt="3st Place"></td>
+    </tr>
+
+
+
+  </table>
+  </div>
+  
+
+
+ </body>
+
+</html>

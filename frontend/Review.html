@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Review</title>
+  </head>
+
+  <style>
+  
+    ul.navbar {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+      align-items: center;
+      justify-content: center; 
+    }
+  
+    ul.navbar li a {
+      display: block;
+      color: white;
+      font-size: large;
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
+      margin-top: 0px;
+      padding: 32px 16px;
+      text-decoration: none;
+      justify-content: center;
+      float: left;
+    }
+  
+    ul.navbar li b {
+      display: block;
+      color: white;
+      font-size: large;
+      font-family: cursive;
+      text-align: center;
+      margin-top: 6px;
+      padding: 20px 16px;
+      text-decoration: none;
+      justify-content: center;
+      float: left;
+    }
+  
+  
+    ul.navbar li a:hover {
+      background-color: #111;
+    }
+  
+    .profile {
+        position: relative;
+        padding: 12px 16px;
+        float: right;
+      }
+  
+      .profile img {
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+      }
+      
+    .table_container {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+    }
+
+    td{
+      padding-right: 100px;
+    }
+    
+    h1{
+      text-align: center;
+      margin-top: 100px;
+      font-family: cursive;
+      font-size: 40px;
+    }
+    
+    h2{
+      line-height: 0px;
+      font-size: 16px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .rating_Img{
+      width: 90px;
+      height: 18px;
+    }
+    
+
+    .button{
+      margin-top: 5px;
+      margin-bottom: 50px;
+      width: 130px;
+      height: 25px;  
+    }
+    </style>
+      
+
+
+    <script>
+
+        const data = [
+    { image: "Icons/LastOfUs.jpg", movie_name:"The Last of Us", rating: 4},
+    { image: "Icons/LastOfUs.jpg", movie_name:"The Last of Us", rating: 4},
+    { image: "Icons/LastOfUs.jpg", movie_name:"The Last of Us", rating: 4},
+    { image: "Icons/LastOfUs.jpg", movie_name:"The Last of Us", rating: 4},
+    { image: "Icons/LastOfUs.jpg", movie_name:"The Last of Us", rating: 4},
+    { image: "Icons/LastOfUs.jpg", movie_name:"The Last of Us", rating: 4},
+    { image: "Icons/LastOfUs.jpg", movie_name:"The Last of Us", rating: 4}
+  ];
+  
+  function addDataToTable() {
+    
+    const table = document.getElementById("MyTable");
+    
+    var row1 = table.insertRow();
+    var row2 = table.insertRow();
+    var row3 = table.insertRow();
+    var row4 = table.insertRow();
+
+    for (let i = 0; i < data.length; i++) {
+      if(i % 4 == 0 && i != 0){
+               
+        row1 = table.insertRow();
+        row2 = table.insertRow();
+        row3 = table.insertRow();
+        row4 = table.insertRow();
+      
+      }
+       
+      
+      const imageCell = row1.insertCell();
+      const image = document.createElement("img");
+      image.src = data[i].image;
+      imageCell.appendChild(image);
+
+      const movie_nameCell = row2.insertCell();
+      const heading = document.createElement("h2");
+      heading.textContent = data[i].movie_name;
+      movie_nameCell.appendChild(heading);
+
+      const ratingCell = row3.insertCell();
+      const ratingImage = document.createElement("img");
+      if(data[i].rating == 1){
+        ratingImage.src = "icons/stars1.png";
+      }
+      else if(data[i].rating == 2){
+        ratingImage.src = "icons/stars2.png";
+      }
+      else if(data[i].rating == 3){
+        ratingImage.src = "icons/stars3.png";
+      }
+      else if(data[i].rating == 4){
+        ratingImage.src = "icons/stars4.png";
+      }
+      else if(data[i].rating == 5){
+        ratingImage.src = "icons/stars5.png";
+      }
+      ratingImage.classList.add("rating_Img")
+      ratingCell.appendChild(ratingImage);
+
+      const delete_cell = row4.insertCell();
+      const delete_button = document.createElement("button")
+      delete_button.textContent = "DELETE REVIEW";
+      delete_button.classList.add("button");
+      delete_cell.appendChild(delete_button);
+
+      }
+    }
+    
+  
+    document.addEventListener("DOMContentLoaded", function(event) {
+      addDataToTable();
+    });
+
+    </script>
+
+
+
+  <body>
+      
+    <ul class="navbar">
+      <li><b href="#">MyMovies</b></li>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Review</a></li>
+      <li><a href="#">Statistic</a></li>
+      <li><a href="#">Watch List</a></li>
+    
+      <li class="profile">
+        <img src="profil-picture.png" alt="Profile Picture">
+      </li>    
+    </ul>   
+    
+        <h1>My Reviews</h1>
+    
+
+      <div class = table_container>
+        <table id="MyTable"></table>          
+      </div>  
+
+  </body>
+</html>
