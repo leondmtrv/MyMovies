@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Watch List</title>
+</head>
+
+<style>
+  
+    ul.navbar {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+      align-items: center;
+      justify-content: center; 
+    }
+  
+    ul.navbar li a {
+      display: block;
+      color: white;
+      font-size: large;
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
+      margin-top: 0px;
+      padding: 32px 16px;
+      text-decoration: none;
+      justify-content: center;
+      float: left;
+    }
+  
+    ul.navbar li b {
+      display: block;
+      color: white;
+      font-size: large;
+      font-family: cursive;
+      text-align: center;
+      margin-top: 6px;
+      padding: 20px 16px;
+      text-decoration: none;
+      justify-content: center;
+      float: left;
+    }
+  
+  
+    ul.navbar li a:hover {
+      background-color: #111;
+    }
+  
+    .profile {
+        position: relative;
+        padding: 12px 16px;
+        float: right;
+      }
+  
+      .profile img {
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+      }
+      
+    .table_container {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+    }
+
+
+
+    h1{
+      text-align: center;
+      margin-top: 100px;
+      font-family: cursive;
+      font-size: 40px;
+    }
+
+    h2{
+      margin-bottom: 10px;
+      font-size: 16px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .review_button{
+      margin-top: 5px;
+      width: 60px;
+      height: 22px;
+      margin-left: 5px;
+    }
+
+    .delete{
+      margin-top: 15px;
+      margin-bottom: 50px;
+      width: 200px;
+      height: 30px;
+    }
+
+    .review_label{
+      margin-top:  20px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      text-align: center;
+    }
+
+    .review_input{
+      width: 120px;
+    }
+
+    td{
+      padding-right: 100px;
+    }
+
+    tr{
+      margin-top: 30px;
+    }
+
+
+    </style>
+
+
+
+<script>
+
+    // Get user id from session storage
+    var userId = sessionStorage.getItem("userId");
+    const data = []
+    fetch('user/watchlist?id=' + userId)
+            .then(response => response.json())
+            .then(res => {
+              //Build array of movie ids
+                var newData = res.watchList;
+                for (var i = 0; i < newData.length; i++) {
+                    const watch = {
+                        image: newData[i].posterURL,
+                        movie_name: newData[i].title,
+                        id: newData[i].IMDBid};
+                    // Add watch to data array
+                    data.push(watch);
+                }
+                addDataToTable();
+            })
+
+    function writeReview(r, d) {
+      console.log(d);
+      var imdbID = d.id;
+      var id = sessionStorage.getItem("userId");
+      const data = {userID: id, movieID: imdbID, review: r};
+      fetch('/review', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+              .then(response => response.json())
+              .then(data => {
+                console.log('Success:', data);
+                alert("Review added!");
+                window.location.href = "/Watch%20List.html";
+              })
+              .catch((error) => {
+                        console.error('Error:', error);
+                      }
+              );
+    }
+
+    function deleteReview(d) {
+        var imdbID = d.id;
+        var id = sessionStorage.getItem("userId");
+        console.log(imdbID);
+        fetch('/user/watchlist/' + id + '/' + imdbID, {
+            method: 'DELETE'})
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                    alert("Review deleted!");
+                    window.location.href = "/Watch%20List.html";
+                })
+                .catch((error) => {
+                            console.error('Error:', error);
+                        }
+                );
+    }
+
+  function addDataToTable() {
+
+    const table = document.getElementById("MyTable");
+
+    var row1 = table.insertRow();
+    var row2 = table.insertRow();
+    var row3 = table.insertRow();
+    var row4 = table.insertRow();
+    var row5 = table.insertRow();
+
+    for (let i = 0; i < data.length; i++) {
+      if(i % 3 == 0 && i != 0){
+
+        row1 = table.insertRow();
+        row2 = table.insertRow();
+        row3 = table.insertRow();
+        row4 = table.insertRow();
+        row5 = table.insertRow();
+
+      }
+
+
+      const imageCell = row1.insertCell();
+      const image = document.createElement("img");
+      image.src = data[i].image;
+      imageCell.appendChild(image);
+
+
+      const movie_nameCell = row2.insertCell();
+      const heading = document.createElement("h2");
+      heading.textContent = data[i].movie_name;
+      movie_nameCell.appendChild(heading);
+
+
+      const review_cell = row3.insertCell();
+      const review_label = document.createElement("label");
+      review_label.textContent = "WRITE REVIEW:";
+      review_label.classList.add("review_label");
+      review_cell.appendChild(review_label);
+
+
+      const review_input_cell = row4.insertCell();
+      const review_input = document.createElement("input");
+      review_input.placeholder = "From 1 to 5";
+      review_input.required = true;
+      review_input.classList.add("review_input");
+      review_input_cell.appendChild(review_input);
+      const review_button = document.createElement("button");
+      review_button.textContent = "Confirm";
+      review_button.onclick = function() {
+            writeReview(review_input.value, data[i]);
+        };
+      review_button.classList.add("review_button");
+      review_input_cell.appendChild(review_button);
+
+
+
+      const delete_cell = row5.insertCell();
+      const delete_button = document.createElement("button")
+      delete_button.textContent = "DELETE FROM WATCH LIST";
+      delete_button.classList.add("delete");
+      delete_button.onclick = function() {
+            deleteReview(data[i]);
+        };
+      delete_cell.appendChild(delete_button);
+
+      }
+    }
+    
+  
+    document.addEventListener("DOMContentLoaded", function(event) {
+      addDataToTable();
+    });
+
+    </script>
+
+
+
+<body>
+
+<ul class="navbar">
+  <li><b href="home.html">MyMovies</b></li>
+  <li><a href="home.html">Home</a></li>
+  <li><a href="Review.html">Review</a></li>
+  <li><a href="Statistic%20Page.html">Statistic</a></li>
+  <li><a href="Watch List.html">Watch List</a></li>
+
+  <li class="profile">
+    <img src="profil-picture.png" alt="Profile Picture">
+  </li>
+</ul>
+
+<h1>My Watch List</h1>
+
+
+<div class = table_container>
+  <table id="MyTable"></table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+
+    create table movie (
+        plot varchar(1000),
+        actors varchar(255),
+        director varchar(255),
+        genre varchar(255),
+        id varchar(255) not null,
+        imdbid varchar(255),
+        posterurl varchar(255),
+        rated varchar(255),
+        released varchar(255),
+        runtime varchar(255),
+        title varchar(255),
+        primary key (id)
+    );
+
+    create table movie_reviewed (
+        review integer,
+        id varchar(255) not null,
+        movieid varchar(255),
+        userid varchar(255),
+        primary key (id)
+    );
+
+    create table profile (
+        watch_time integer,
+        id varchar(255) not null,
+        password varchar(255),
+        username varchar(255),
+        primary key (id)
+    );
+
+    create table profile_reviewed (
+        profile_id varchar(255) not null,
+        reviewed_id varchar(255) not null
+    );
+
+    create table profile_watch_list (
+        profile_id varchar(255) not null,
+        watch_list_id varchar(255) not null
+    );
+
+    alter table if exists profile_reviewed 
+       add constraint FKegr9ebc5tpueevr8o1gcnx4do 
+       foreign key (reviewed_id) 
+       references movie_reviewed;
+
+    alter table if exists profile_reviewed 
+       add constraint FKfpidqah3d96p2hljs43iwjovw 
+       foreign key (profile_id) 
+       references profile;
+
+    alter table if exists profile_watch_list 
+       add constraint FKd2u5gwoir47ubirj0if8a5o0j 
+       foreign key (watch_list_id) 
+       references movie;
+
+    alter table if exists profile_watch_list 
+       add constraint FKibbix711mjwqn50u3gp4742r0 
+       foreign key (profile_id) 
+       references profile;
+
+    create table movie (
+        plot varchar(1000),
+        actors varchar(255),
+        director varchar(255),
+        genre varchar(255),
+        id varchar(255) not null,
+        imdbid varchar(255),
+        posterurl varchar(255),
+        rated varchar(255),
+        released varchar(255),
+        runtime varchar(255),
+        title varchar(255),
+        primary key (id)
+    );
+
+    create table movie_reviewed (
+        review integer,
+        id varchar(255) not null,
+        movieid varchar(255),
+        userid varchar(255),
+        primary key (id)
+    );
+
+    create table profile (
+        watch_time integer,
+        id varchar(255) not null,
+        password varchar(255),
+        username varchar(255),
+        primary key (id)
+    );
+
+    create table profile_reviewed (
+        profile_id varchar(255) not null,
+        reviewed_id varchar(255) not null
+    );
+
+    create table profile_watch_list (
+        profile_id varchar(255) not null,
+        watch_list_id varchar(255) not null
+    );
+
+    alter table if exists profile_reviewed 
+       add constraint FKegr9ebc5tpueevr8o1gcnx4do 
+       foreign key (reviewed_id) 
+       references movie_reviewed;
+
+    alter table if exists profile_reviewed 
+       add constraint FKfpidqah3d96p2hljs43iwjovw 
+       foreign key (profile_id) 
+       references profile;
+
+    alter table if exists profile_watch_list 
+       add constraint FKd2u5gwoir47ubirj0if8a5o0j 
+       foreign key (watch_list_id) 
+       references movie;
+
+    alter table if exists profile_watch_list 
+       add constraint FKibbix711mjwqn50u3gp4742r0 
+       foreign key (profile_id) 
+       references profile;

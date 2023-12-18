@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<head>
+    <title>LogIn</title>
+</head>
+
+<style>
+    #rectangle{
+
+        width: 900px;
+        height: 550px;
+        background-color: #333;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform:  translate(-50%, -50%);
+        /*margin: 0px auto;
+        margin-top: 130px;*/
+
+    }
+
+    .title{
+
+        color: #ffffff;
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        transform:  translate(-50%, -50%);
+        font-family: cursive;
+    }
+
+    .username{
+
+        font-family: cursive;
+        color: #ffffff;
+        margin-top: 200px;
+        margin-left: 100px;
+        display:inline-block;
+        margin-right:10px;
+
+    }
+
+    .password{
+
+        font-family: cursive;
+        color: #ffffff;
+
+        margin-top: 50px;
+        margin-left: 100px;
+        display:inline-block;
+        margin-right: 16px;
+    }
+
+    .input{
+      width: 500px;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    #createAccount{
+        margin-top: 20px;
+        margin-left: 450px;
+        left: 50%;
+        transform:  translate(-50%, -50%);
+        width: 300px;
+        height: 30px;
+        background:none;
+        border:none;
+        color: #ffffff;
+    }
+
+    #logIn{
+        margin-top: 40px;
+        margin-left: 450px;
+        left: 50%;
+        transform:  translate(-50%, -50%);
+        width: 150px;
+        height: 30px;
+    }
+
+    #eye{
+      position: relative;
+      top: 1.5%;
+      width:30px;
+      height:30px;
+    }
+
+    #checkbox{
+      margin-left: 15px;
+    }
+
+ </style>
+
+<script type="text/javascript">
+
+    function login() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("typepass").value;
+        // Need to check if response is null or not
+        fetch("/user/" + username + "/" + password)
+            .then(response => response.json())
+            .then(data => {
+                if (data == null) {
+                    alert("Invalid username or password");
+                } else {
+                    // Store user id in session storage
+                    sessionStorage.setItem("userId", data.id);
+                    window.location.href = "/home.html";
+                }
+            });
+    }
+
+
+    function signup() {
+        window.location.href = "/SignUp.html";
+    }
+
+    function Toggle() {
+            let temp = document.getElementById("typepass");
+
+            if (temp.type === "password") {
+                temp.type = "text";
+            }
+            else {
+                temp.type = "password";
+            }
+        }
+</script>
+
+
+<body>
+
+<div id="rectangle">
+
+    <h1 class = "title">Log In</h1>
+    <h2 class = "username">Username:</h2>
+    <input class="input" type="text" id="username" name="username" placeholder="Enter your username" required>
+    <h2 class = "password">Password:</h2>
+    <input class="input" type="password" id="typepass" name="password" placeholder="Enter your password" required>
+    <input id="checkbox" type="checkbox" onclick="Toggle()">
+    <img id="eye" src="Icons/eye.jpg" />
+
+    <button id="logIn" onclick="login()">Log In</button>
+    <button id="createAccount" onclick="signup()">Don't Have An Account? Create An Account!</button>
+
+</div>
+</body>
+</html>
